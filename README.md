@@ -42,3 +42,7 @@ Then make a `.env` file to store environmental variables:
 
 Add your custom dataset/pdfs to the `data` directory to chat with Llama3 about them.
 ## Gallery
+![chat](https://github.com/divine-architect/focus./blob/main/imgs/chat.png)
+![email](https://github.com/divine-architect/focus./blob/main/imgs/email.png)
+![todo](https://github.com/divine-architect/focus./blob/main/imgs/todo.png)
+<hr>
