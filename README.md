@@ -20,7 +20,7 @@ A simple producitivity suite made for individuals with ADHD and neurotypicals al
 ## Current problems
 - Email UI is glitchy
 - Distribution
-- Requires Python libraries to be installed(stems from previous problem)
+- Requires Python libraries to be installed (stems from previous problem)
 - Not really non-programmer friendly
 
 ## Prerequisites
