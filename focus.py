@@ -10,7 +10,6 @@ from flask import Flask, render_template, request, jsonify
 from getpass import getuser
 from datetime import datetime
 from waitress import serve
-from multiprocessing import Process
 from dotenv import load_dotenv
 from markdown2 import markdown
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
@@ -185,7 +184,7 @@ def chat():
                                       to perform tasks related to it.
                                       Here is the user question {user_message}. Retrieve the required information from the context knowledge base
                                       and do whatever the user wants with the retrieved information. Explain the required points in neat concise points.
-                                      Output the information in neat markdown formatting (this part is important). Do not mention unnecessary stuff and keep the conversation relevant.
+                                      Output the information in neat markdown formatting (this part is important).
                                       """)
         
         
@@ -216,24 +215,10 @@ def get_quote():
     else:
         return "Could not retrieve a quote at this time."
 
-# Function to run the Flask server
-def run_flask():
-    serve(app, host='127.0.0.1', port=5000)
 
-extract_text_from_pdfs("data")
 
 if __name__ == '__main__':
-    flask_process = Process(target=run_flask)
-    flask_process.start()
-
-    while True:
-        try:
-            requests.get('http://127.0.0.1:5000/')
-            break
-        except requests.exceptions.ConnectionError:
-            time.sleep(1)
-
-    webview.create_window("focus.", "http://127.0.0.1:5000/", width=1000, height=800)
+    extract_text_from_pdfs("data")
+    webview.create_window("focus.", app, width=1000, height=800)
     webview.start()
-
     flask_process.terminate()
